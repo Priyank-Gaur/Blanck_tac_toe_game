@@ -1,0 +1,91 @@
+:root {
+    --background: #1e1e2f;
+    --primary: #ff6b6b;
+    --primary-dark: #e63946;
+    --gray-100: #2c2c3e;
+    --gray-200: #393952;
+    --gray-700: #dcdcdc;
+    --gray-800: #ffffff;
+  }
+  
+  body {
+    background-color: var(--background);
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container {
+    padding: 2rem;
+    text-align: center;
+    color: var(--gray-800);
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .selector {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .selector select {
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+    margin: 1rem auto;
+  }
+  
+  .cell {
+    width: 80px;
+    height: 80px;
+    background-color: var(--gray-100);
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cell:hover {
+    background-color: var(--gray-200);
+    transform: scale(1.05);
+  }
+  
+  .status {
+    font-size: 1.2rem;
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+  }
+  
+  .reset {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .reset:hover {
+    background: var(--primary-dark);
+  }
+  
