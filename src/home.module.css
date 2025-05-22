@@ -1,75 +1,85 @@
-:root {
-    --background: #1e1e2f;
-    --primary: #ff6b6b;
-    --primary-dark: #e63946;
-    --gray-100: #2c2c3e;
-    --gray-200: #393952;
-    --gray-700: #dcdcdc;
-    --gray-800: #ffffff;
-  }
-  
-  body {
-    background-color: var(--background);
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .landing {
+.landing {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 2rem;
-    text-align: center;
     min-height: 100vh;
-    color: var(--gray-800);
+    background: linear-gradient(to right, #1e1e2f, #2a2a40);
+    color: #ffffff;
+    text-align: center;
   }
   
   .title {
     font-size: 3rem;
+    font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #ff6b6b;
   }
   
   .subtitle {
     font-size: 1.2rem;
-    color: var(--gray-700);
     margin-bottom: 2rem;
+    color: #cccccc;
+  }
+  
+  .aboutBox {
+    background-color: #2f2f44;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    color: #f0f0f0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .aboutBox h3 {
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
   }
   
   .selectionPanel {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    background-color: var(--gray-100);
+    background-color: #2f2f44;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
   
   .selector {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    text-align: left;
   }
   
   .selector label {
-    font-weight: bold;
-    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #dddddd;
   }
   
   .selector select {
     padding: 0.6rem;
     border-radius: 8px;
     font-size: 1rem;
-    background: var(--gray-200);
-    color: var(--gray-800);
+    background: #44445f;
+    color: white;
     border: none;
+    outline: none;
+  }
+  
+  .error {
+    color: #ff6b6b;
+    font-weight: bold;
   }
   
   .playBtn {
-    background: var(--primary);
+    background: #ff6b6b;
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.6rem;
     font-size: 1.1rem;
     font-weight: bold;
     border-radius: 10px;
@@ -79,6 +89,6 @@
   }
   
   .playBtn:hover {
-    background: var(--primary-dark);
+    background: #e63946;
   }
   

@@ -40,8 +40,17 @@ export default function Home() {
 
   return (
     <div className={styles.landing}>
-      <h1 className={styles.title}>Blink Tac Toe</h1>
-      <p className={styles.subtitle}>Choose a unique emoji category for each player</p>
+      <h1 className={styles.title}>✨ Blink Tac Toe ✨</h1>
+      <p className={styles.subtitle}>A twist on the classic Tic Tac Toe using emojis and vanishing rules!</p>
+
+      <div className={styles.aboutBox}>
+        <h3>About the Game</h3>
+        <p>
+          Blink Tac Toe is a fun, modern take on the classic 3x3 game. Each player selects a unique emoji category and places random emojis on the board.
+          Only 3 emojis per player are allowed at any time — when a 4th is placed, the oldest disappears! Win by placing any 3 of your category emojis in a line.
+        </p>
+      </div>
+
       <div className={styles.selectionPanel}>
         <div className={styles.selector}>
           <label>Player 1 Category:</label>
@@ -52,6 +61,7 @@ export default function Home() {
             ))}
           </select>
         </div>
+
         <div className={styles.selector}>
           <label>Player 2 Category:</label>
           <select value={player2Cat} onChange={(e) => setPlayer2Cat(e.target.value)}>
@@ -61,8 +71,10 @@ export default function Home() {
             ))}
           </select>
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button className={styles.playBtn} onClick={handleStart}>Start Game</button>
+
+        {error && <p className={styles.error}>{error}</p>}
+
+        <button className={styles.playBtn} onClick={handleStart}>🎮 Start Game</button>
       </div>
     </div>
   );
