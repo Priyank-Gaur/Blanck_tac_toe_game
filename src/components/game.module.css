@@ -15,6 +15,13 @@
   }
   
   .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    min-height: 100vh;
     padding: 2rem;
     text-align: center;
     color: var(--gray-800);
@@ -42,15 +49,17 @@
   
   .board {
     display: grid;
-    grid-template-columns: repeat(3, 120px);
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
     gap: 12px;
     justify-content: center;
     margin: 2rem 0;
+    width: 100%;
+    max-width: 400px;
   }
   
   .cell {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps it square */
     background-color: var(--gray-100);
     border: 2px solid var(--gray-200);
     border-radius: 10px;
@@ -67,6 +76,31 @@
     background-color: var(--gray-200);
     transform: scale(1.05);
   }
+  
+  @media (max-width: 480px) {
+    .cell {
+      font-size: 2.5rem;
+    }
+  
+    .board {
+      max-width: 300px;
+      gap: 10px;
+    }
+  
+    .title {
+      font-size: 2rem;
+    }
+  
+    .status {
+      font-size: 1rem;
+    }
+  
+    .buttons button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+  
     
   .status {
     font-size: 1.2rem;
@@ -131,4 +165,5 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
+  
   
