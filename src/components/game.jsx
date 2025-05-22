@@ -68,6 +68,10 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       setWinner(null);
     };
   
+    const goToHome = () => {
+      window.location.reload();
+    };
+  
     const status = winner
       ? `🎉 ${winner} Wins!`
       : `Next Turn: ${isPlayer1Turn ? player1Name : player2Name}`;
@@ -87,7 +91,15 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
             </div>
           ))}
         </div>
-        <button className={styles.reset} onClick={resetGame}>Reset Game</button>
+        <div className={styles.buttons}>
+          <button
+            className={winner ? styles.playAgain : styles.reset}
+            onClick={resetGame}
+          >
+            {winner ? 'Play Again' : 'Reset Game'}
+          </button>
+          <button className={styles.homeBtn} onClick={goToHome}>🏠 Back to Home</button>
+        </div>
       </div>
     );
   }

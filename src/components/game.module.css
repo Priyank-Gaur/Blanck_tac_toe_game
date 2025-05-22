@@ -42,21 +42,22 @@
   
   .board {
     display: grid;
-    grid-template-columns: repeat(3, 80px);
-    gap: 10px;
+    grid-template-columns: repeat(3, 120px);
+    gap: 12px;
     justify-content: center;
-    margin: 1rem auto;
+    margin: 2rem 0;
   }
   
   .cell {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     background-color: var(--gray-100);
     border: 2px solid var(--gray-200);
-    border-radius: 8px;
-    font-size: 2rem;
+    border-radius: 10px;
+    font-size: 3rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +67,7 @@
     background-color: var(--gray-200);
     transform: scale(1.05);
   }
-  
+    
   .status {
     font-size: 1.2rem;
     color: var(--gray-700);
@@ -76,16 +77,58 @@
   .reset {
     background: var(--primary);
     color: white;
-    padding: 0.6rem 1.2rem;
+    padding: 0.7rem 1.5rem;
     font-size: 1rem;
     font-weight: bold;
+    border-radius: 10px;
     border: none;
-    border-radius: 8px;
+    margin: 1rem 0.5rem;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
   }
   
   .reset:hover {
     background: var(--primary-dark);
+  }
+  
+  .playAgain {
+    background-color: #38a169; 
+    color: white;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .playAgain:hover {
+    background-color: #2f855a;
+  }
+  
+  .homeBtn {
+    background-color: #4fd1c5;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .homeBtn:hover {
+    background-color: #38b2ac;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   
