@@ -8,6 +8,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
     const [player2Moves, setPlayer2Moves] = useState([]);
     const [winner, setWinner] = useState(null);
     const [score, setScore] = useState({ player1: 0, player2: 0 });
+    const [winningLine, setWinningLine] = useState([]);
   
     const currentCategory = isPlayer1Turn ? player1Category : player2Category;
     const currentMoves = isPlayer1Turn ? player1Moves : player2Moves;
@@ -34,9 +35,11 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       setBoard(newBoard);
       setCurrentMoves(updatedMoves);
   
-      if (checkWinner(newBoard, currentCategory)) {
+      const result = checkWinner(newBoard, currentCategory);
+      if (result.won) {
         const winName = isPlayer1Turn ? player1Name : player2Name;
         setWinner(winName);
+        setWinningLine(result.line);
         setScore((prev) => ({
           player1: winName === player1Name ? prev.player1 + 1 : prev.player1,
           player2: winName === player2Name ? prev.player2 + 1 : prev.player2,
@@ -45,7 +48,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
         setIsPlayer1Turn(!isPlayer1Turn);
       }
     };
-     
+  
     const checkWinner = (squares, category) => {
       const lines = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -53,17 +56,18 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
         [0, 4, 8], [2, 4, 6],
       ];
   
-      for (let [a, b, c] of lines) {
+      for (let line of lines) {
+        const [a, b, c] = line;
         if (
           squares[a] && squares[b] && squares[c] &&
           category.includes(squares[a]) &&
           category.includes(squares[b]) &&
           category.includes(squares[c])
         ) {
-          return true;
+          return { won: true, line };
         }
       }
-      return false;
+      return { won: false };
     };
   
     const resetGame = () => {
@@ -72,10 +76,11 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       setPlayer2Moves([]);
       setIsPlayer1Turn(true);
       setWinner(null);
+      setWinningLine([]);
     };
   
     const goToHome = () => {
-      window.location.reload(); // This resets the scores too since component unmounts
+      window.location.reload();
     };
   
     const status = winner
@@ -94,7 +99,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
           {board.map((val, idx) => (
             <div
               key={idx}
-              className={styles.cell}
+              className={`${styles.cell} ${winningLine.includes(idx) ? styles.winHighlight : ''}`}
               onClick={() => handleClick(idx)}
             >
               {val}
@@ -113,3 +118,4 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       </div>
     );
   }
+  

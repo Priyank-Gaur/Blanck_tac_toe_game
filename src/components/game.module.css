@@ -185,4 +185,10 @@
   }
   
   
+  .winHighlight {
+    background-color: #38a169 !important; 
+    color: white;
+    border: 3px solid #2f855a;
+    transform: scale(1.05);
+  }
   
