@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 import styles from './game.module.css';
 
 export default function BlinkTacToe({ player1Category, player2Category, player1Name, player2Name }) {
@@ -7,6 +7,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
     const [player1Moves, setPlayer1Moves] = useState([]);
     const [player2Moves, setPlayer2Moves] = useState([]);
     const [winner, setWinner] = useState(null);
+    const [score, setScore] = useState({ player1: 0, player2: 0 });
   
     const currentCategory = isPlayer1Turn ? player1Category : player2Category;
     const currentMoves = isPlayer1Turn ? player1Moves : player2Moves;
@@ -34,12 +35,17 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       setCurrentMoves(updatedMoves);
   
       if (checkWinner(newBoard, currentCategory)) {
-        setWinner(isPlayer1Turn ? player1Name : player2Name);
+        const winName = isPlayer1Turn ? player1Name : player2Name;
+        setWinner(winName);
+        setScore((prev) => ({
+          player1: winName === player1Name ? prev.player1 + 1 : prev.player1,
+          player2: winName === player2Name ? prev.player2 + 1 : prev.player2,
+        }));
       } else {
         setIsPlayer1Turn(!isPlayer1Turn);
       }
     };
-  
+     
     const checkWinner = (squares, category) => {
       const lines = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -69,7 +75,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
     };
   
     const goToHome = () => {
-      window.location.reload();
+      window.location.reload(); // This resets the scores too since component unmounts
     };
   
     const status = winner
@@ -79,6 +85,10 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>Blink Tac Toe</h2>
+        <div className={styles.scoreboard}>
+          <span>{player1Name}: {score.player1}</span>
+          <span>{player2Name}: {score.player2}</span>
+        </div>
         <div className={styles.status}>{status}</div>
         <div className={styles.board}>
           {board.map((val, idx) => (
