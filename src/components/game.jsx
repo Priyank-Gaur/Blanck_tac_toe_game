@@ -22,7 +22,6 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       const emoji = getRandomEmoji();
       const updatedMoves = [...currentMoves];
   
-      // Vanishing Rule
       if (updatedMoves.length === 3) {
         const removed = updatedMoves.shift();
         board[removed.index] = null;
@@ -34,8 +33,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
       setBoard(newBoard);
       setCurrentMoves(updatedMoves);
   
-      // Check win
-      if (checkWinner(newBoard, isPlayer1Turn ? player1Category : player2Category)) {
+      if (checkWinner(newBoard, currentCategory)) {
         setWinner(isPlayer1Turn ? player1Name : player2Name);
       } else {
         setIsPlayer1Turn(!isPlayer1Turn);
@@ -89,7 +87,7 @@ export default function BlinkTacToe({ player1Category, player2Category, player1N
             </div>
           ))}
         </div>
-        {winner && <button className={styles.reset} onClick={resetGame}>Play Again</button>}
+        <button className={styles.reset} onClick={resetGame}>Reset Game</button>
       </div>
     );
   }
