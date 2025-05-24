@@ -20,6 +20,7 @@ Example categories used:
 - Animals 🐶🐱🦊
 - Fruits 🍎🍌🍉
 - Faces 😀😂😍
+- Sports ⚽🏀🎾
 - Custom emoji sets passed as props to the game
 
 ---
