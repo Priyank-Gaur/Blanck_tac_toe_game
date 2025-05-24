@@ -41,14 +41,18 @@ export default function Home() {
   return (
     <div className={styles.landing}>
       <h1 className={styles.title}>✨ Blink Tac Toe ✨</h1>
-      <p className={styles.subtitle}>A twist on the classic Tic Tac Toe using emojis and vanishing rules!</p>
+      <p className={styles.subtitle}>Choose your emojis and challenge your friend in a tactical twist on Tic Tac Toe!</p>
 
       <div className={styles.aboutBox}>
-        <h3>About the Game</h3>
-        <p>
-          Blink Tac Toe is a fun, modern take on the classic 3x3 game. Each player selects a unique emoji category and places random emojis on the board.
-          Only 3 emojis per player are allowed at any time — when a 4th is placed, the oldest disappears! Win by placing any 3 of your category emojis in a line.
-        </p>
+        <h3>🧠 How to Play</h3>
+        <ul className={styles.rulesList}>
+          <li><strong>Step 1:</strong> Each player picks a unique emoji category (like Animals or Food).</li>
+          <li><strong>Step 2:</strong> On your turn, a random emoji from your category is assigned to you.</li>
+          <li><strong>Step 3:</strong> You can place your emoji on any empty cell on the 3x3 board.</li>
+          <li><strong>Vanishing Rule:</strong> You can have a maximum of 3 emojis on the board. When you place a 4th, the oldest one disappears.</li>
+          <li><strong>Winning:</strong> Line up 3 of your emojis (horizontally, vertically, or diagonally) to win!</li>
+          <li><strong>Bonus:</strong> The game never ends in a draw. Play as many rounds as you like!</li>
+        </ul>
       </div>
 
       <div className={styles.selectionPanel}>

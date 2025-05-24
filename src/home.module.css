@@ -92,3 +92,16 @@
     background: #e63946;
   }
   
+  .rulesList {
+    text-align: left;
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+    line-height: 1.6;
+    color: #eeeeee;
+    font-size: 1rem;
+  }
+  
+  .rulesList li {
+    margin-bottom: 0.75rem;
+  }
+  
