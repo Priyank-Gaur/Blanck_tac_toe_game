@@ -105,3 +105,20 @@
     margin-bottom: 0.75rem;
   }
   
+  .soundToggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .soundToggle:hover {
+    background: #666;
+  }
+  

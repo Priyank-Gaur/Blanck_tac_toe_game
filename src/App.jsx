@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState,useEffect,useRef } from 'react';
 import BlinkTacToe from "./components/game.jsx"
 import styles from './home.module.css';
 
@@ -15,6 +15,28 @@ export default function Home() {
   const [player2Cat, setPlayer2Cat] = useState('');
   const [error, setError] = useState('');
   const [start, setStart] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const musicRef = useRef(null);
+
+  useEffect(() => {
+    const audio = musicRef.current;
+    if (audio) {
+      audio.volume = 0.3;
+      audio.pause();
+    }
+  }, []);
+
+  const toggleMute = () => {
+    if (musicRef.current) {
+      if (isMuted) {
+        musicRef.current.play().catch(() => {});
+      } else {
+        musicRef.current.pause();
+      }
+      setIsMuted(!isMuted);
+    }
+  };
 
   const handleStart = () => {
     if (player1Cat === '' || player2Cat === '') {
@@ -23,6 +45,10 @@ export default function Home() {
       setError('Players cannot choose the same category!');
     } else {
       setError('');
+      if (musicRef.current) {
+        musicRef.current.pause();
+        musicRef.current.currentTime = 0;
+      }
       setStart(true);
     }
   };
@@ -40,6 +66,10 @@ export default function Home() {
 
   return (
     <div className={styles.landing}>
+      <audio ref={musicRef} src="/background.mp3" loop />
+      <button onClick={toggleMute} className={styles.soundToggle}>
+        {isMuted ? '🔇 Sound Off' : '🔊 Sound On'}
+      </button>
       <h1 className={styles.title}>✨ Blink Tac Toe ✨</h1>
       <p className={styles.subtitle}>Choose your emojis and challenge your friend in a tactical twist on Tic Tac Toe!</p>
 
@@ -48,10 +78,10 @@ export default function Home() {
         <ul className={styles.rulesList}>
           <li><strong>Step 1:</strong> Each player picks a unique emoji category (like Animals or Food).</li>
           <li><strong>Step 2:</strong> On your turn, a random emoji from your category is assigned to you.</li>
-          <li><strong>Step 3:</strong> You can place your emoji on any empty cell on the 3x3 board.</li>
-          <li><strong>Vanishing Rule:</strong> You can have a maximum of 3 emojis on the board. When you place a 4th, the oldest one disappears.</li>
-          <li><strong>Winning:</strong> Line up 3 of your emojis (horizontally, vertically, or diagonally) to win!</li>
-          <li><strong>Bonus:</strong> The game never ends in a draw. Play as many rounds as you like!</li>
+          <li><strong>Step 3:</strong> Place your emoji on any empty cell in the 3x3 grid.</li>
+          <li><strong>Vanishing Rule:</strong> Only 3 emojis per player are allowed on the board. The oldest disappears when placing a 4th.</li>
+          <li><strong>Winning:</strong> Line up 3 of your emojis to win!</li>
+          <li><strong>Bonus:</strong> There are no draws — you can play forever!</li>
         </ul>
       </div>
 
